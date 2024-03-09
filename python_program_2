@@ -1,0 +1,17 @@
+from datetime import date
+
+print("Enter Date (dd/mm/yyyy): ", end='')
+d, m, y = map(int, input().split('/')) 
+
+anniversary = date(y, m, d)
+anniversary_year = anniversary.year
+
+if anniversary_year % 4 == 0 and (anniversary_year % 100 != 0 or anniversary_year % 400 == 0):
+    print("Given Anniversary Year: Leap Year")
+    next_anniversary = anniversary.replace(year=anniversary_year+1)
+    print("Next Anniversary Date:", next_anniversary.strftime("%d/%m/%Y"))
+
+else:
+    print("Given Anniversary Year: Non Leap Year") 
+    prev_anniversary = anniversary.replace(year=anniversary_year-1)
+    print("Anniversary Date:", prev_anniversary.strftime("%d/%m/%Y"))
