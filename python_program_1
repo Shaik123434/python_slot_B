@@ -1,0 +1,24 @@
+from collections import deque
+
+def is_valid(s):
+    stack = deque()
+    lookup = {')':'(', '}':'{', ']':'['}
+    
+    for char in s:
+        if char in lookup.values():
+            stack.append(char)
+        elif char in lookup.keys():
+            if not stack or lookup[char] != stack.pop():
+                return False
+        else:
+            return False
+    
+    return not stack
+    
+print("Enter a string to check:")
+input_str = input()
+
+if is_valid(input_str):
+  print("Valid string")
+else:
+  print("Invalid string")
